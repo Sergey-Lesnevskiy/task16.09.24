@@ -1,3 +1,33 @@
+.to-left {
+  animation-name: left;
+}
+.to-right {
+  animation-name: right;
+  animation-direction: reverse;
+}
+.from-left {
+  animation-name: left;
+  animation-direction: reverse;
+}
+.from-right {
+  animation-name: right;
+}
+@keyframes left {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100%;
+  }
+}
+@keyframes right {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
+}
 @font-face {
   font-family: "wt-monarch-nova";
   src: url("https://db.onlinewebfonts.com/t/5e4df315bceb4e9c81342f0cfbc7dbf8.eot");
@@ -68,7 +98,7 @@ html .body .header .header__navIconBar .brand__list .brand__item .wrapper__slogg
   height: 30px;
 }
 html .body .header .header__carousel {
-  background-color: #d6bbaf;
+  background-color: #9a5a3b;
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
@@ -97,18 +127,59 @@ html .body .header .header__carousel .carousel__wrapper .carousel-control-prev .
 html .body .header .header__carousel .carousel__wrapper .carousel-inner {
   overflow: hidden;
   position: relative;
-  width: 100%;
+  width: 90%;
 }
-html .body .header .header__carousel .carousel__wrapper .carousel-inner .carousel-item {
-  backface-visibility: hidden;
+html .body .header .header__carousel .carousel__wrapper .carousel-inner .carousel__content {
+  animation: 0.5s ease;
+  display: none;
   position: relative;
-  transition: transform 0.6s ease-in-out;
   width: 100%;
-  color: #ffffff;
-  padding: 0 10px;
 }
-html .body .header .header__carousel .carousel__wrapper .carousel-inner .carousel-item .carousel-item-link {
+html .body .header .header__carousel .carousel__wrapper .carousel-inner .carousel__content .carousel-item {
+  position: absolute;
+  animation: 0.5s ease;
+  width: 100%;
+  color: #fff;
+  padding: 0 10px;
+  left: 0;
+}
+html .body .header .header__carousel .carousel__wrapper .carousel-inner .carousel__content .carousel-item .carousel-item-link {
   text-decoration: underline;
+  animation: 0.5s ease;
+}
+html .body .header .header__carousel .carousel__wrapper .carousel-inner .active,
+html .body .header .header__carousel .carousel__wrapper .carousel-inner .next {
+  display: block;
+}
+html .body .header .header__carousel .carousel__wrapper .carousel-inner .to-left {
+  animation-name: left;
+}
+html .body .header .header__carousel .carousel__wrapper .carousel-inner .to-right {
+  animation-name: right;
+  animation-direction: reverse;
+}
+html .body .header .header__carousel .carousel__wrapper .carousel-inner .from-left {
+  animation-name: left;
+  animation-direction: reverse;
+}
+html .body .header .header__carousel .carousel__wrapper .carousel-inner .from-right {
+  animation-name: right;
+}
+@keyframes left {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100%;
+  }
+}
+@keyframes right {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
 }
 html .body .header .header__carousel .carousel__wrapper .carousel-control-next {
   color: #d6bbaf;
@@ -261,7 +332,7 @@ html .body .header .header__mobile .cursor-pointer:hover .svgIcon--style6 {
   fill: #000;
 }
 html .body .header .header__mobile .cursor-pointer:hover .svgIcon--style7 {
-  fill: #FFF;
+  fill: #fff;
 }
 html .body .header .header__mobile .svgIcon__shoppingBag:hover .svgIcon--style2 {
   fill: none;
@@ -393,10 +464,10 @@ html .body .header .header__menu {
     fill: #000;
   }
   html .body .header .header__navIconBar .header__icon .cursor-pointer:hover .svgIcon--style7 {
-    fill: #FFF;
+    fill: #fff;
   }
   html .body .header .header__navIconBar .header__icon .cursor-pointer:hover .svgIcon--style9 {
-    stroke: #FFF;
+    stroke: #fff;
   }
   html .body .header .header__navIconBar .header__icon .svgIcon__shoppingBag:hover .svgIcon--style2 {
     fill: none;
@@ -487,7 +558,7 @@ html .body .header .header__menu {
     display: flex;
   }
   html .body .header .header__menu .menu__wrapper .navigation__categories .navigation__category:last-child {
-    color: #FF0000;
+    color: #ff0000;
   }
   html .body .header .header__menu .menu__wrapper .custom-Triumph #ARTWORK {
     height: 24px;
@@ -516,10 +587,10 @@ html .body .main .carousel__slider .carousel__inner {
   padding: 0 5px;
 }
 html .body .main .carousel__slider .carousel__inner .carousel__item {
-  background-image: url(https://uk.triumph.com/dw/image/v2/AAFY_PRD/on/demandware.static/-/Library-Sites-Triumph/default/dw1fb8e2a0/redesign/PageDesigner/Homepages/MemberDays/TRIUMPH_BANNERS_MEMBERDAYS_Desktop_1148x448px_GB.jpg?sh=645&q=70);
+  background-image: url(https://uk.triumph.com/dw/image/v2/AAFY_PRD/on/demandware.static/-/Library-Sites-Triumph/default/dwfa7590bc/redesign/PageDesigner/Homepages/GET20/TRIUMPH_BANNERS_AMOURETTE_300_PROMO_Mobile_414x355px_GB.jpg?sh=836&q=70);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center right;
+  background-position: center;
   height: 345px;
 }
 html .body .main .carousel__slider .carousel__control {
@@ -556,4 +627,7 @@ html .body .main .carousel__slider .carousel__indicators .active {
 }
 html .body .main .content {
   height: 300px;
+}
+.carousel__content.active {
+  display: block;
 }

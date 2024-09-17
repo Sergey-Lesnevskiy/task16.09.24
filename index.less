@@ -2,9 +2,48 @@
 @color-linenGrey: #f2f2f2;
 @warmStone: #e9e9e6;
 @black: #000;
-@white: #FFF;
-@red: #FF0000;
+@white: #fff;
+@red: #ff0000;
+@color-rawClay: #9a5a3b;
 // @triumphRed:#e40032;
+
+.to-left {
+  animation-name: left;
+}
+
+.to-right {
+  animation-name: right;
+  animation-direction: reverse;
+}
+
+.from-left {
+  animation-name: left;
+  animation-direction: reverse;
+}
+
+.from-right {
+  animation-name: right;
+}
+
+@keyframes left {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: -100%;
+  }
+}
+
+@keyframes right {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: 0;
+  }
+}
 
 @font-face {
   font-family: "wt-monarch-nova";
@@ -32,15 +71,14 @@
   stroke-linejoin: round;
   shape-rendering: geometricprecision;
 }
-.svgIcon--style7{
+.svgIcon--style7 {
   fill: none;
   stroke: @black;
   stroke-width: 2;
   stroke-miterlimit: 10;
   shape-rendering: geometricprecision;
 }
-html{
-
+html {
   .body {
     background-color: @color-linenGrey;
     font-family: avenirnext, Century Gothic, arial, verdana, sans-serif;
@@ -84,7 +122,7 @@ html{
         }
       }
       .header__carousel {
-        background-color: @color-lightCoral;
+        background-color: @color-rawClay;
         display: flex;
         align-items: center;
         flex-direction: row-reverse;
@@ -111,16 +149,67 @@ html{
           .carousel-inner {
             overflow: hidden;
             position: relative;
-            width: 100%;
-            .carousel-item {
-              backface-visibility: hidden;
+            width: 90%;
+            .carousel__content {
+              animation: 0.5s ease;
+              display: none;
               position: relative;
-              transition: transform 0.6s ease-in-out;
               width: 100%;
-              color: #ffffff;
-              padding: 0 10px;
-              .carousel-item-link {
-                text-decoration: underline;
+              // transition: all 0.6s ease-in-out;
+              .carousel-item {
+                position: absolute;
+                // transition: all 0.6s ease-in-out;
+                animation: 0.5s ease;
+                width: 100%;
+                color: @white;
+                padding: 0 10px;
+                left: 0;
+                .carousel-item-link {
+                  text-decoration: underline;
+                  // transition: all 0.6s ease-in-out;
+                  animation: 0.5s ease;
+                }
+              }
+            }
+            .active,
+            .next {
+              display: block;
+            }
+
+            .to-left {
+              animation-name: left;
+            }
+            
+            .to-right {
+              animation-name: right;
+              animation-direction: reverse;
+            }
+            
+            .from-left {
+              animation-name: left;
+              animation-direction: reverse;
+            }
+            
+            .from-right {
+              animation-name: right;
+            }
+            @keyframes left {
+              from {
+                left: 0
+              }
+            
+              to {
+                left: -100%
+              }
+            }
+            
+            @keyframes right {
+              from {
+                left: 100%
+              }
+            
+              to {
+                left: 0
               }
             }
           }
@@ -167,16 +256,10 @@ html{
         position: fixed;
         width: 100%;
         z-index: 99;
-  
+
         .svgIcon__menuClose {
           width: 16px;
           .svgIcon--style1 {
-            // fill: none;
-            // stroke: @black;
-            // stroke-width: 2;
-            // stroke-linecap: round;
-            // stroke-linejoin: round;
-            // shape-rendering: geometricprecision;
             .svgIcon--style1();
           }
           .svgIcon__menuClose--close {
@@ -186,32 +269,15 @@ html{
         .svgIcon__search {
           width: 18px;
           .svgIcon--style1 {
-            // fill: none;
-            // stroke: #000;
-            // stroke-width: 2;
-            // stroke-linecap: round;
-            // stroke-linejoin: round;
-            // shape-rendering: geometricprecision;
             .svgIcon--style1();
           }
         }
         .svgIcon__mapPin {
           width: 18px;
           .svgIcon--style3 {
-            // fill: none;
-            // stroke: #000;
-            // stroke-width: 2;
-            // stroke-linecap: round;
-            // stroke-linejoin: round;
-            // shape-rendering: geometricprecision;
-            .svgIcon--style1()
+            .svgIcon--style1();
           }
           .svgIcon--style7 {
-            // fill: none;
-            // stroke: @black;
-            // stroke-width: 2;
-            // stroke-miterlimit: 10;
-            // shape-rendering: geometricprecision;
             .svgIcon--style7();
           }
         }
@@ -219,11 +285,6 @@ html{
           width: 20px;
           .svgIcon--style3 {
             .svgIcon--style7();
-            // fill: none;
-            // stroke:@black;
-            // stroke-width: 2;
-            // stroke-miterlimit: 10;
-            // shape-rendering: geometricprecision;
           }
         }
         .svgIcon__user {
@@ -233,38 +294,18 @@ html{
           }
           .svgIcon--style3 {
             .svgIcon--style7();
-            // fill: none;
-            // stroke: #000;
-            // stroke-width: 2;
-            // stroke-miterlimit: 10;
-            // shape-rendering: geometricprecision;
           }
           .svgIcon--style1 {
             .svgIcon--style7();
-            // fill: none;
-            // stroke: #000;
-            // stroke-width: 2;
-            // stroke-miterlimit: 10;
-            // shape-rendering: geometricprecision;
           }
         }
         .svgIcon__shoppingBag {
           width: 17px;
           .svgIcon--style3 {
             .svgIcon--style7();
-            // fill: none;
-            // stroke: #000;
-            // stroke-width: 2;
-            // stroke-miterlimit: 10;
-            // shape-rendering: geometricprecision;
           }
           .svgIcon--style2 {
             .svgIcon--style7();
-            // fill: none;
-            // stroke: #000;
-            // stroke-width: 2;
-            // stroke-miterlimit: 10;
-            // shape-rendering: geometricprecision;
           }
         }
         .cursor-pointer:hover {
@@ -272,19 +313,19 @@ html{
             fill: @black;
           }
           .svgIcon--style2 {
-            fill:@black;
+            fill: @black;
           }
           .svgIcon--style3 {
-            fill:@black;
+            fill: @black;
           }
           .svgIcon--style4 {
-            fill:@black;
+            fill: @black;
           }
           .svgIcon--style5 {
-            fill:@black;
+            fill: @black;
           }
           .svgIcon--style6 {
-            fill:@black;
+            fill: @black;
           }
           .svgIcon--style7 {
             fill: @white;
@@ -390,19 +431,9 @@ html{
                 shape-rendering: geometricprecision;
               }
               .svgIcon--style6 {
-                // fill: none;
-                // stroke: #000;
-                // stroke-width: 2;
-                // stroke-miterlimit: 10;
-                // shape-rendering: geometricprecision;
                 .svgIcon--style3();
               }
               .svgIcon--style7 {
-                // fill: none;
-                // stroke: #000;
-                // stroke-width: 2;
-                // stroke-miterlimit: 10;
-                // shape-rendering: geometricprecision;
                 .svgIcon--style3();
               }
             }
@@ -439,13 +470,7 @@ html{
             }
             .svgIcon__shoppingBag {
               .svgIcon--style2 {
-                // fill: none;
-                // stroke: #000;
-                // stroke-width: 2;
-                // stroke-linecap: round;
-                // stroke-linejoin: round;
-                // shape-rendering: geometricprecision;
-                .svgIcon--style1()
+                .svgIcon--style1();
               }
             }
           }
@@ -570,10 +595,10 @@ html{
         .carousel__inner {
           padding: 0 5px;
           .carousel__item {
-            background-image: url(https://uk.triumph.com/dw/image/v2/AAFY_PRD/on/demandware.static/-/Library-Sites-Triumph/default/dw1fb8e2a0/redesign/PageDesigner/Homepages/MemberDays/TRIUMPH_BANNERS_MEMBERDAYS_Desktop_1148x448px_GB.jpg?sh=645&q=70);
+            background-image: url(https://uk.triumph.com/dw/image/v2/AAFY_PRD/on/demandware.static/-/Library-Sites-Triumph/default/dwfa7590bc/redesign/PageDesigner/Homepages/GET20/TRIUMPH_BANNERS_AMOURETTE_300_PROMO_Mobile_414x355px_GB.jpg?sh=836&q=70);
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: center right;
+            background-position: center;
             height: 345px;
           }
         }
@@ -611,10 +636,24 @@ html{
           }
         }
       }
-      .content{
+      .content {
         height: 300px;
       }
     }
   }
 }
-
+.carousel__content.active {
+  display: block;
+  // .carousel-item {
+  //   position: absolute;
+  //   transition: all 0.6s ease-in-out;
+  //   width: 100%;
+  //   color: @white;
+  //   padding: 0 10px;
+  //   left: 0;
+  //   .carousel-item-link {
+  //     text-decoration: underline;
+  //     transition: all 0.6s ease-in-out;
+  //   }
+  // }
+}

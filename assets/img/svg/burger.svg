@@ -1,0 +1,11 @@
+<svg class="svgIcon cursor-pointer svgIcon__menuClose flyout-toggle initialised" data-ta-id="navigation-menu" data-toggle="navigation" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 15" xml:space="preserve">
+    <g class="svgIcon__menuClose--menu">
+        <path class="svgIcon--style1" d="M1,7.5h18"></path>
+        <path class="svgIcon--style1" d="M1,1.5h18"></path>
+        <path class="svgIcon--style1" d="M1,13.5h18"></path>
+    </g>
+    <g class="svgIcon__menuClose--close">
+        <path class="svgIcon--style1" d="M1.5,14.2L14.2,1.5"></path>
+        <path class="svgIcon--style1" d="M14.2,14.2L1.5,1.5"></path>
+    </g>
+</svg>

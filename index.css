@@ -585,29 +585,87 @@ html .body .main {
 }
 html .body .main .carousel__slider .carousel__inner {
   padding: 0 5px;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
 }
-html .body .main .carousel__slider .carousel__inner .carousel__item {
-  background-image: url(https://uk.triumph.com/dw/image/v2/AAFY_PRD/on/demandware.static/-/Library-Sites-Triumph/default/dwfa7590bc/redesign/PageDesigner/Homepages/GET20/TRIUMPH_BANNERS_AMOURETTE_300_PROMO_Mobile_414x355px_GB.jpg?sh=836&q=70);
+html .body .main .carousel__slider .carousel__inner .carousel__container {
+  position: relative;
+  width: 300%;
+  height: 100%;
+  display: flex;
+  left: -100%;
+}
+html .body .main .carousel__slider .carousel__inner .carousel__container .carousel__item {
+  position: relative;
+  animation: 0.5s ease-in-out;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
-  height: 345px;
+  height: 100%;
+  width: 100%;
+}
+@keyframes move_right {
+  from {
+    left: -100;
+  }
+  to {
+    left: -200%;
+  }
+}
+html .body .main .carousel__slider .carousel__inner .transition_right {
+  animation-name: move_right;
+  animation-duration: 3s;
+}
+@keyframes move_left {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 0;
+  }
+}
+html .body .main .carousel__slider .carousel__inner .transition_left {
+  animation-name: move_left;
+  animation-duration: 3s;
 }
 html .body .main .carousel__slider .carousel__control {
+  display: none;
+  margin: 0 calc(50% - 700px);
+  max-width: 1400px;
   position: absolute;
+  top: calc(50% - -145px);
+  width: 100%;
+}
+html .body .main .carousel__slider .carousel__control .button {
+  width: 42px;
+  height: 42px;
+  background-color: #fff;
+  box-shadow: 0 2px 3px #0000001f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+}
+html .body .main .carousel__slider .carousel__control .button .button__icon {
+  font-size: 30px;
+}
+html .body .main .carousel__slider .carousel__control .carousel-control-prev-img {
+  display: none;
 }
 html .body .main .carousel__slider .carousel__indicators {
   width: 100%;
   display: flex;
   justify-content: center;
   height: 10px;
+  transition: all ease 1.3s;
 }
 html .body .main .carousel__slider .carousel__indicators .button-indicator {
   background-clip: padding-box;
   background-color: #aeaeae;
   border: 0;
-  border-bottom: 10px solid #0000;
-  border-top: 10px solid #0000;
+  border-bottom: 10px solid #ffffff00;
+  border-top: 10px solid #ffffff00;
   box-sizing: initial;
   cursor: pointer;
   flex: 0 1 auto;
@@ -628,6 +686,16 @@ html .body .main .carousel__slider .carousel__indicators .active {
 html .body .main .content {
   height: 300px;
 }
-.carousel__content.active {
-  display: block;
+@media (min-width: 991px) {
+  html .body .main .carousel__slider .carousel__control {
+    display: block;
+  }
+  html .body .main .carousel__slider .carousel__control .carousel-control-next-img {
+    right: 0;
+  }
+}
+@media (min-width: 1326px) {
+  html .body .main .carousel__slider .carousel__control .carousel-control-prev-img {
+    display: inline-flex;
+  }
 }

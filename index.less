@@ -1,10 +1,12 @@
 @color-lightCoral: #d6bbaf;
 @color-linenGrey: #f2f2f2;
 @warmStone: #e9e9e6;
+@grey: #aeaeae;
 @black: #000;
 @white: #fff;
 @red: #ff0000;
 @color-rawClay: #9a5a3b;
+@whiteTransparent: #ffffff00;;
 // @triumphRed:#e40032;
 
 .to-left {
@@ -106,11 +108,6 @@ html {
               }
             }
             .wrapper__sloggi {
-              // display: flex;
-              // align-items: center;
-              // height: 40px;
-              // justify-content: center;
-              // padding: 5px 0;
               .wrapper__triumph();
               background: @warmStone;
               img {
@@ -179,37 +176,37 @@ html {
             .to-left {
               animation-name: left;
             }
-            
+
             .to-right {
               animation-name: right;
               animation-direction: reverse;
             }
-            
+
             .from-left {
               animation-name: left;
               animation-direction: reverse;
             }
-            
+
             .from-right {
               animation-name: right;
             }
             @keyframes left {
               from {
-                left: 0
+                left: 0;
               }
-            
+
               to {
-                left: -100%
+                left: -100%;
               }
             }
-            
+
             @keyframes right {
               from {
-                left: 100%
+                left: 100%;
               }
-            
+
               to {
-                left: 0
+                left: 0;
               }
             }
           }
@@ -594,28 +591,93 @@ html {
       .carousel__slider {
         .carousel__inner {
           padding: 0 5px;
-          .carousel__item {
-            background-image: url(https://uk.triumph.com/dw/image/v2/AAFY_PRD/on/demandware.static/-/Library-Sites-Triumph/default/dwfa7590bc/redesign/PageDesigner/Homepages/GET20/TRIUMPH_BANNERS_AMOURETTE_300_PROMO_Mobile_414x355px_GB.jpg?sh=836&q=70);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            height: 345px;
+          position: relative;
+          width: 100%;
+          height: 400px;
+          overflow: hidden;
+          .carousel__container {
+            position: relative;
+            width: 300%;
+            height: 100%;
+            display: flex;
+            left: -100%;
+            .carousel__item {
+              // background-image: url(https://uk.triumph.com/dw/image/v2/AAFY_PRD/on/demandware.static/-/Library-Sites-Triumph/default/dwfa7590bc/redesign/PageDesigner/Homepages/GET20/TRIUMPH_BANNERS_AMOURETTE_300_PROMO_Mobile_414x355px_GB.jpg?sh=836&q=70);
+              // display: none;
+              position: relative;
+              // margin: 0 auto;
+              animation: 0.5s ease-in-out;
+              background-size: cover;
+              background-repeat: no-repeat;
+              // background-position: center;
+              height: 100%;
+              width: 100%;
+              // img{
+              //   width: 100vw;
+              // }
+            }
+          }
+          @keyframes move_right {
+            from {
+              left: -100;
+            }
+            to {
+              left: -200%;
+            }
+          }
+          .transition_right {
+            animation-name: move_right;
+            animation-duration: 3s;
+          }
+          @keyframes move_left {
+            from {
+              left: -100%;
+            }
+            to {
+              left: 0;
+            }
+          }
+          .transition_left {
+            animation-name: move_left;
+            animation-duration: 3s;
           }
         }
         .carousel__control {
+          display: none;
+          margin: 0 calc(50% - 700px);
+          max-width: 1400px;
           position: absolute;
+          top: calc(50% - -145px);
+          width: 100%;
+          .button {
+            width: 42px;
+            height: 42px;
+            background-color: @white;
+            box-shadow: 0 2px 3px #0000001f;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            opacity: .5;
+            .button__icon {
+              font-size: 30px;
+            }
+          }
+          .carousel-control-prev-img{
+            display: none;
+          }
         }
         .carousel__indicators {
           width: 100%;
           display: flex;
           justify-content: center;
           height: 10px;
+          transition: all ease 1.3s;
           .button-indicator {
             background-clip: padding-box;
-            background-color: #aeaeae;
+            background-color: @grey;
             border: 0;
-            border-bottom: 10px solid #0000;
-            border-top: 10px solid #0000;
+            border-bottom: 10px solid @whiteTransparent;
+            border-top: 10px solid @whiteTransparent;
             box-sizing: initial;
             cursor: pointer;
             flex: 0 1 auto;
@@ -624,7 +686,6 @@ html {
             margin-right: 3px;
             opacity: 0.5;
             padding: 0;
-            // text-indent: -999px;
             transition: opacity 0.6s ease;
             width: 30px;
             display: flex;
@@ -639,21 +700,29 @@ html {
       .content {
         height: 300px;
       }
+      @media (min-width: 991px) {
+        .carousel__slider {
+          .carousel__control {
+            display: block;
+            .carousel-control-next-img{
+              right: 0;
+            }
+          }
+        }
+      }
+      @media (min-width: 1326px) {
+        .carousel__slider {
+          .carousel__control {
+            .carousel-control-prev-img{
+              display: inline-flex;
+            }
+          }
+
+        }
+      }
     }
   }
 }
-.carousel__content.active {
-  display: block;
-  // .carousel-item {
-  //   position: absolute;
-  //   transition: all 0.6s ease-in-out;
-  //   width: 100%;
-  //   color: @white;
-  //   padding: 0 10px;
-  //   left: 0;
-  //   .carousel-item-link {
-  //     text-decoration: underline;
-  //     transition: all 0.6s ease-in-out;
-  //   }
-  // }
-}
+// .carousel__content.active {
+//   display: block;
+// }

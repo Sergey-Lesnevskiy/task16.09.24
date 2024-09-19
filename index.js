@@ -1,4 +1,4 @@
-import { data_img, data_text } from './data.js'
+import { data_img, data_text, data_categories } from './data.js'
 
 
 function createCarouselElementsText() {
@@ -188,12 +188,8 @@ CAROUSEL.addEventListener('animationend', (animationEvent) => {//добавля�
     } else {
       rightItem = +changedItem;
     }
-    // const ITEM_RIGHT = document.querySelector('#item_right')
     ITEM_RIGHT.style.backgroundImage = `url(${data_img[rightItem].scrMob})`;
     ITEM_RIGHT.setAttribute('data-img', rightItem)
-    // to left section
-    // changedItem--
-    
 
   }
 
@@ -201,3 +197,73 @@ CAROUSEL.addEventListener('animationend', (animationEvent) => {//добавля�
   BTN_RIGHT.addEventListener('click', move_right)
   BTN_LEFT.addEventListener('click', move_left)
 })
+
+// burger-menu
+const BURGER_BTN = document.querySelector('.svgIcon__menuClose');
+BURGER_BTN.addEventListener('click',()=>{
+document.querySelector('.header__menu').classList.toggle('active');
+document.querySelector('.blackout').classList.toggle('active');
+
+})
+document.querySelector('.blackout').addEventListener('click',()=>{
+document.querySelector('.header__menu').classList.toggle('active');
+document.querySelector('.blackout').classList.toggle('active');
+})
+document.querySelector('.cross').addEventListener('click',()=>{
+document.querySelector('.header__menu').classList.toggle('active');
+document.querySelector('.blackout').classList.toggle('active');
+})
+
+let nav = document.querySelectorAll('.navigation__category')
+
+function createBurgerSubCategories(categoryNum, category) {
+  const item = document.createElement("div");
+  for (let index = 0; index < nav.length; index++) {
+    nav[index].classList.add('navigation__category-hide')
+  }
+  item.classList.add("subBurger");
+  item.innerHTML = `
+    
+  <div class="categories-name">
+  <img src="./assets/img/svg/arrow-sm-left-svgrepo-com.svg" alt="arrow" class="categories-name-img"> ${category}</div>
+            <ul class="navigation__categories-subBurger">
+            </ul>`;
+            document.querySelector(".menu__wrapper").appendChild(item)
+
+for(let item in data_categories[categoryNum].mainName){
+  const li = document.createElement("li");
+  li.classList.add("navigation__category-subBurger");
+  li.innerHTML = `
+            <span class="navigation__categories-subBurger">${data_categories[0].mainName[item]}
+            </span>`;
+  document.querySelector(".navigation__categories-subBurger").appendChild(li)
+}
+
+for(let item in data_categories[categoryNum].Category){
+  const li = document.createElement("li");
+  li.classList.add("navigation__category-subBurger");
+  li.innerHTML = `
+            <span class="navigation__categories-subBurger">${data_categories[0].Category[item]}
+            </span>`;
+  document.querySelector(".navigation__categories-subBurger").appendChild(li)
+}
+
+}
+document.querySelector(".bras").addEventListener('click',(e)=>{
+e.target.textContent
+  createBurgerSubCategories(0,e.target.textContent);
+  setTimeout(()=>{
+
+    document.querySelector(".subBurger").classList.toggle('active')
+  },100)
+})
+
+document.querySelector(".menu__wrapper").addEventListener('click',(e)=>{
+  if (e.target.className === 'categories-name'||e.target.className === 'categories-name-img') {
+    document.querySelector(".subBurger").classList.toggle('active')
+    for (let index = 0; index < nav.length; index++) {
+      nav[index].classList.remove('navigation__category-hide')
+    }
+  }
+})
+ 
